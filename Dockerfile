@@ -15,9 +15,9 @@ COPY ./src ./src
 RUN npm run build
 
 # Set environment variables
-ARG WEBHOOK_SECRET
+ARG GITHUB_SECRET
 ARG PORT
-ENV WEBHOOK_SECRET=$WEBHOOK_SECRET
+ENV GITHUB_SECRET=$GITHUB_SECRET
 ENV PORT=$PORT
 
 # Expose the port the application runs on

@@ -35,7 +35,7 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build Docker image
-      run: docker build --build-arg WEBHOOK_SECRET=${{ secrets.WEBHOOK_SECRET }} --build-arg PORT=${{ vars.PORT }} -t ${{ secrets.DOCKER_USERNAME }}/whale-k8s-webhook-server:latest .
+      run: docker build --build-arg GITHUB_SECRET=${{ secrets.GITHUB_SECRET }} --build-arg PORT=${{ vars.PORT }} -t ${{ secrets.DOCKER_USERNAME }}/whale-k8s-webhook-server:latest .
 
     - name: Push Docker image
       run: docker push ${{ secrets.DOCKER_USERNAME }}/whale-k8s-webhook-server:latest
