@@ -10,10 +10,18 @@ RUN npm install --production
 
 # Copy the rest of the application code
 COPY ./src ./src
-COPY .env ./
+
+# Build TypeScript code
+RUN npm run build
+
+# Set environment variables
+ARG WEBHOOK_SECRET
+ARG PORT
+ENV WEBHOOK_SECRET=$WEBHOOK_SECRET
+ENV PORT=$PORT
 
 # Expose the port the application runs on
-EXPOSE 3000
+EXPOSE $PORT
 
 # Start the application
-CMD ["node", "src/server.js"]
+CMD ["node", "dist/server.js"]
