@@ -11,9 +11,6 @@ RUN npm install --production
 # Copy the rest of the application code
 COPY ./src ./src
 
-# Build TypeScript code
-RUN npm run build
-
 # Set environment variables
 ARG GITHUB_SECRET
 ARG PORT
@@ -24,4 +21,4 @@ ENV PORT=$PORT
 EXPOSE $PORT
 
 # Start the application
-CMD ["node", "dist/server.js"]
+CMD ["node", "src/server.js"]
